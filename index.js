@@ -8,7 +8,7 @@ const app = express();
 var PORT = process.env.PORT || 4000;
 
 //Connect to mongoDB
-mongoose.connect('mongodb://localhost/product');
+mongoose.connect('mongodb://sam:tester1@ds119422.mlab.com:19422/heroku_1sf98jr4');
 mongoose.Promise = global.Promise;
 
 app.use(express.static('public'));
