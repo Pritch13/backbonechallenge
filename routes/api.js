@@ -4,23 +4,30 @@ const Product = require('../models/product');
 
 
 //Get list of Products from DB
-router.get('/product', function(req, res, next){
-    Product.find().then(function(product){
+router.get('/product', function (req, res, next) {
+    Product.find().then(function (product) {
         res.send(product);
     })
 });
 
-//Add a new Product to DB
-router.post('/product', function(req, res, next){
-    Product.create(req.body).then(function(product){
+//Find one Product in DB
+router.get('/product/:id', function (req, res, next) {
+    Product.findOne({ _id: req.params.id }).then(function (product) {
         res.send(product);
-    }).catch(next);
+    })
 });
 
+// //Add a new Product to DB - if this was required
+// router.post('/product', function (req, res, next) {
+//     Product.create(req.body).then(function (product) {
+//         res.send(product);
+//     }).catch(next);
+// });
+
 //Update Procut in DB
-router.put('/product/:id', function(req, res, next){
-    Product.findByIdAndUpdate({_id: req.params.id}, req.body).then(function(){
-        Product.findOne({_id: req.params.id}).then(function(product){
+router.put('/product/:id', function (req, res, next) {
+    Product.findByIdAndUpdate({ _id: req.params.id }, req.body).then(function () {
+        Product.findOne({ _id: req.params.id }).then(function (product) {
             res.send(product);
         })
 
@@ -28,8 +35,8 @@ router.put('/product/:id', function(req, res, next){
 });
 
 //Delete Product in DB
-router.delete('/product/:id', function(req, res, next){
-    Product.findByIdAndRemove({_id: req.params.id}).then(function(product){
+router.delete('/product/:id', function (req, res, next) {
+    Product.findByIdAndRemove({ _id: req.params.id }).then(function (product) {
         res.send(product);
     })
 });
