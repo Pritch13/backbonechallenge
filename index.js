@@ -27,6 +27,6 @@ app.use('/api', require('./routes/api'));
  })
 
 //Listen for request
-app.listen(process.env.PORT || PORT, function () {
+app.listen(PORT, function () {
     console.log('Now listening for requests');
 });
