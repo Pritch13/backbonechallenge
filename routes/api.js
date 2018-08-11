@@ -24,7 +24,7 @@ router.get('/product/:id', function (req, res, next) {
 //     }).catch(next);
 // });
 
-//Update Procut in DB
+//Update Product in DB
 router.put('/product/:id', function (req, res, next) {
     Product.findByIdAndUpdate({ _id: req.params.id }, req.body).then(function () {
         Product.findOne({ _id: req.params.id }).then(function (product) {
