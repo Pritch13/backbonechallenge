@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 //Set up express app
 const app = express();
 
+var PORT = process.env.PORT || 4000;
+
 //Connect to mongoDB
 mongoose.connect('mongodb://localhost/product');
 mongoose.Promise = global.Promise;
@@ -25,6 +27,6 @@ app.use('/api', require('./routes/api'));
  })
 
 //Listen for request
-app.listen(process.env.PORT || 4000, function () {
+app.listen(process.env.PORT || PORT, function () {
     console.log('Now listening for requests');
 });
